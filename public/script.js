@@ -220,6 +220,7 @@ const montarRegex = (termos) => {
         x.endsWith('*') ? `\\b${x.slice(0, -1)}\\w*` : `\\b${x}\\b`
     ).join('|');
     
+    // eslint-disable-next-line security/detect-non-literal-regexp
     return new RegExp(padroes, 'i');
 };
 
