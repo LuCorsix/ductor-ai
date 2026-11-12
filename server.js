@@ -96,12 +96,7 @@ const LIMITES = {
 // =======================================================
 // DETECÇÃO DE SITUAÇÃO DE RISCO (autoagressão / suicídio)
 // =======================================================
-const REGEX_CRISE = new RegExp([
-    'suicid', 'me matar', 'quero morrer', 'vou me matar', 'acabar com (a )?(minha )?vida', 'tirar (a )?minha vida',
-    'automutila', 'me cortar', 'me machucar', 'nao quero (mais )?viver', 'nao aguento mais viver',
-    'kill myself', 'want to die', 'end my life', 'self[- ]?harm', 'hurt myself', "don'?t want to live",
-    'quiero morir', 'quitarme la vida', 'matarme', 'hacerme dano', 'no quiero vivir'
-].join('|'), 'i');
+const REGEX_CRISE = /suicide|me matar|quero morrer|vou me matar|acabar com (a )?(minha )?vida|tirar (a )?minha vida|automutila|me cortar|me machucar|nao quero (mais )?viver|nao aguento mais viver/i;
 
 function mensagemDeRisco(texto) {
     const limpo = String(texto).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
