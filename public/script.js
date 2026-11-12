@@ -238,12 +238,7 @@ const REGEX_EMOCIONAL = montarRegex([
 ]);
 
 // Situação de risco: NUNCA bloqueia nem pede para trocar de modo; vai direto para a IA / CVV
-const REGEX_RISCO = new RegExp([
-    'suicid', 'me matar', 'quero morrer', 'vou me matar', 'acabar com (a )?(minha )?vida', 'tirar (a )?minha vida',
-    'automutila', 'me cortar', 'me machucar', 'nao quero (mais )?viver', 'nao aguento mais viver',
-    'kill myself', 'want to die', 'end my life', 'self[- ]?harm', 'hurt myself', "don'?t want to live",
-    'quiero morir', 'quitarme la vida', 'matarme', 'hacerme dano', 'no quiero vivir'
-].join('|'), 'i');
+const REGEX_RISCO = /suicid|me matar|quero morrer|vou me matar|acabar com (a )?(minha )?vida|tirar (a )?minha vida|automutila|me cortar|me machucar|nao quero (mais )?viver|nao aguento mais viver/i;
 
 const semAcentos = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
