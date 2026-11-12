@@ -215,9 +215,13 @@ function criarBalao(tipo, classeExtra) {
 // ==========================================
 // Termos com "*" no fim valem como início de palavra; sem "*", só a palavra inteira.
 // (Assim "contexto" não é confundido com "texto", nem "ventilador" com "vent".)
-const montarRegex = (termos) => new RegExp(
-    termos.map(x => x.endsWith('*') ? `\\b${x.slice(0, -1)}\\w*` : `\\b${x}\\b`).join('|'), 'i'
-);
+const montarRegex = (termos) => {
+    const padroes = termos.map(x => 
+        x.endsWith('*') ? `\\b${x.slice(0, -1)}\\w*` : `\\b${x}\\b`
+    ).join('|');
+    
+    return new RegExp(padroes, 'i');
+};
 
 const REGEX_ACADEMICO = montarRegex([
     'plagio*', 'artigo*', 'tcc', 'paragrafo*', 'texto*', 'academ*', 'faculdade', 'referencia*', 'citacao', 'citacoes', 'resumo*',
